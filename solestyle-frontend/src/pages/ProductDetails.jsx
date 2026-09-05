@@ -1,5 +1,6 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./ProductDetails.css";
 
 import api from "../services/api";
 

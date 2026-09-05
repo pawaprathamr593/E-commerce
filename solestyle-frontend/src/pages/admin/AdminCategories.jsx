@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import "./Admin.css";
 
 function AdminCategories() {
   const [categories, setCategories] = useState([]);

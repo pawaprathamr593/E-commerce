@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import api from "../services/api";
+import "./Products.css";
 
 function Products() {
   const [searchParams, setSearchParams] = useSearchParams();
