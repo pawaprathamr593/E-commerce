@@ -1,6 +1,7 @@
 # =========================
 # React / Node.js
 # =========================
+
 node_modules/
 dist/
 build/
@@ -23,19 +24,22 @@ pnpm-debug.log*
 # =========================
 # Spring Boot / Maven
 # =========================
+
 target/
+
 *.class
 *.jar
 *.war
 *.ear
 
-# Maven wrapper generated files
 .mvn/timing.properties
 
 
 # =========================
-# Java / Eclipse
+# Eclipse
 # =========================
+
+.metadata/
 .classpath
 .project
 .settings/
@@ -45,14 +49,15 @@ target/
 # =========================
 # IntelliJ IDEA
 # =========================
+
 .idea/
 *.iml
 
 
 # =========================
-# Environment / Secrets
+# Local configuration
 # =========================
-.env
+
 application-local.properties
 application-local.yml
 application-local.yaml
@@ -61,19 +66,23 @@ application-local.yaml
 # =========================
 # Logs
 # =========================
+
 *.log
 
 
 # =========================
-# OS files
+# macOS / Windows
 # =========================
+
 .DS_Store
+**/.DS_Store
 Thumbs.db
 
 
 # =========================
 # Database files
 # =========================
+
 *.db
 *.sqlite
 *.sqlite3
