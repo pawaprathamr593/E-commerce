@@ -1,0 +1,5 @@
+package com.solestyle.entity;
+
+public class Order {
+
+}

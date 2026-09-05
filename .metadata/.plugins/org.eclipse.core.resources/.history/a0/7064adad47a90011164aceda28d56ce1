@@ -1,0 +1,5 @@
+package com.solestyle.config;
+
+public class CorsConfig {
+
+}

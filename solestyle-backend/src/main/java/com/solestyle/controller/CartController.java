@@ -1,0 +1,74 @@
+package com.solestyle.controller;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.solestyle.entity.Cart;
+import com.solestyle.service.CartService;
+
+@RestController
+@RequestMapping("/api/cart")
+public class CartController {
+
+    private final CartService cartService;
+
+    public CartController(CartService cartService) {
+        this.cartService = cartService;
+    }
+
+    @PostMapping("/add")
+    public Cart addToCart(
+            @RequestParam Long userId,
+            @RequestParam Long productId,
+            @RequestParam int quantity,
+            @RequestParam String size) {
+
+        return cartService.addToCart(
+                userId,
+                productId,
+                quantity,
+                size
+        );
+    }
+
+    @GetMapping("/{userId}")
+    public Cart getCart(@PathVariable Long userId) {
+
+        return cartService.getCartByUser(userId);
+    }
+
+    @PutMapping("/item/{cartItemId}")
+    public Cart updateCartItem(
+            @PathVariable Long cartItemId,
+            @RequestParam int quantity) {
+
+        return cartService.updateCartItem(
+                cartItemId,
+                quantity
+        );
+    }
+
+    @DeleteMapping("/item/{cartItemId}")
+    public String removeCartItem(
+            @PathVariable Long cartItemId) {
+
+        cartService.removeCartItem(cartItemId);
+
+        return "Item removed from cart";
+    }
+
+    @DeleteMapping("/clear/{userId}")
+    public String clearCart(
+            @PathVariable Long userId) {
+
+        cartService.clearCart(userId);
+
+        return "Cart cleared successfully";
+    }
+}

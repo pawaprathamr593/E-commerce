@@ -1,0 +1,73 @@
+package com.solestyle.entity;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "orders")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Order {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    private User user;
+
+    private Double totalAmount;
+
+    private String status;
+
+    private String paymentStatus;
+
+    private String razorpayOrderId;
+
+    private String razorpayPaymentId;
+
+    private LocalDateTime orderDate;
+
+    // Customer / delivery details
+    private String customerName;
+
+    private String customerEmail;
+
+    private String phone;
+
+    private String address;
+
+    private String city;
+
+    private String state;
+
+    private String pincode;
+
+    // Items purchased in this order
+    @OneToMany(
+            mappedBy = "order",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JsonManagedReference
+    private List<OrderItem> items = new ArrayList<>();
+}

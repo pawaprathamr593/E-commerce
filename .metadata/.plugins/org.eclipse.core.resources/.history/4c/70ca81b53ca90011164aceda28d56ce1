@@ -1,0 +1,5 @@
+package com.solestyle.repository;
+
+public interface ProductRepository {
+
+}
